@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用数据库 | Koishi</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/koishi.png">
+  <meta name="theme-color" content="#5546a3">
+    
+    <link rel="preload" href="/assets/css/0.styles.eeae3500.css" as="style"><link rel="preload" href="/assets/js/app.5e404ef9.js" as="script"><link rel="preload" href="/assets/js/3.96e62b40.js" as="script"><link rel="preload" href="/assets/js/9.c056d3a4.js" as="script"><link rel="preload" href="/assets/js/41.ff23dafa.js" as="script"><link rel="preload" href="/assets/js/6.e0e03e1b.js" as="script"><link rel="prefetch" href="/assets/js/1.ad268de4.js"><link rel="prefetch" href="/assets/js/10.c63adc7b.js"><link rel="prefetch" href="/assets/js/11.bf51c4d2.js"><link rel="prefetch" href="/assets/js/12.8743cdfa.js"><link rel="prefetch" href="/assets/js/13.372ce0e0.js"><link rel="prefetch" href="/assets/js/14.520fa3e9.js"><link rel="prefetch" href="/assets/js/15.1d874e8b.js"><link rel="prefetch" href="/assets/js/16.f5da307a.js"><link rel="prefetch" href="/assets/js/17.3cd2705c.js"><link rel="prefetch" href="/assets/js/18.d0629aa8.js"><link rel="prefetch" href="/assets/js/19.9779cdf1.js"><link rel="prefetch" href="/assets/js/20.ca2b088c.js"><link rel="prefetch" href="/assets/js/21.81f42b0c.js"><link rel="prefetch" href="/assets/js/22.85f4c6dd.js"><link rel="prefetch" href="/assets/js/23.14982cb7.js"><link rel="prefetch" href="/assets/js/24.bff0de70.js"><link rel="prefetch" href="/assets/js/25.a42d09c1.js"><link rel="prefetch" href="/assets/js/26.c5e93385.js"><link rel="prefetch" href="/assets/js/27.a725a783.js"><link rel="prefetch" href="/assets/js/28.03927fc1.js"><link rel="prefetch" href="/assets/js/29.828c3dda.js"><link rel="prefetch" href="/assets/js/30.86d2efee.js"><link rel="prefetch" href="/assets/js/31.2ddfdc3f.js"><link rel="prefetch" href="/assets/js/32.a7b2cf53.js"><link rel="prefetch" href="/assets/js/33.5a6d67f0.js"><link rel="prefetch" href="/assets/js/34.78bdcb34.js"><link rel="prefetch" href="/assets/js/35.43b80328.js"><link rel="prefetch" href="/assets/js/36.db8824df.js"><link rel="prefetch" href="/assets/js/37.6fd163a3.js"><link rel="prefetch" href="/assets/js/38.0f950249.js"><link rel="prefetch" href="/assets/js/39.f8f50ccf.js"><link rel="prefetch" href="/assets/js/4.35568283.js"><link rel="prefetch" href="/assets/js/40.d791f40c.js"><link rel="prefetch" href="/assets/js/42.5d8bb3e0.js"><link rel="prefetch" href="/assets/js/43.7a42d283.js"><link rel="prefetch" href="/assets/js/44.352a9d4b.js"><link rel="prefetch" href="/assets/js/45.0da67440.js"><link rel="prefetch" href="/assets/js/46.f7b91651.js"><link rel="prefetch" href="/assets/js/47.e1592042.js"><link rel="prefetch" href="/assets/js/48.53f804dd.js"><link rel="prefetch" href="/assets/js/49.99b6e991.js"><link rel="prefetch" href="/assets/js/5.cd8f3df8.js"><link rel="prefetch" href="/assets/js/50.66b72aea.js"><link rel="prefetch" href="/assets/js/51.532ca33c.js"><link rel="prefetch" href="/assets/js/52.d0a70f55.js"><link rel="prefetch" href="/assets/js/53.6e75be0c.js"><link rel="prefetch" href="/assets/js/54.8a061dc0.js"><link rel="prefetch" href="/assets/js/55.14d4a500.js"><link rel="prefetch" href="/assets/js/56.4fcef5b0.js"><link rel="prefetch" href="/assets/js/57.3312908f.js"><link rel="prefetch" href="/assets/js/58.65421806.js"><link rel="prefetch" href="/assets/js/59.d0dc4274.js"><link rel="prefetch" href="/assets/js/60.01c5d7d0.js"><link rel="prefetch" href="/assets/js/7.a0f18f1c.js"><link rel="prefetch" href="/assets/js/8.f92b0e6a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.eeae3500.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/koishi.png" alt="Koishi" class="logo"> <span class="site-name can-hide">Koishi</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/guide/getting-started.html" class="nav-link">指南</a></div><div class="nav-item"><a href="/api/" class="nav-link">API</a></div><div class="nav-item"><a href="/plugins/" class="nav-link">官方插件</a></div><div class="nav-item"><a href="https://github.com/koishijs/koishi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/guide/getting-started.html" class="nav-link">指南</a></div><div class="nav-item"><a href="/api/" class="nav-link">API</a></div><div class="nav-item"><a href="/plugins/" class="nav-link">官方插件</a></div><div class="nav-item"><a href="https://github.com/koishijs/koishi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/about-koishi.html" class="sidebar-link">介绍</a></li><li><a href="/guide/getting-started.html" class="sidebar-link">快速上手</a></li><li><a href="/guide/config-file.html" class="sidebar-link">配置文件</a></li><li><a href="/guide/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/guide/faq.html" class="sidebar-link">常见问题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>深入</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/receive-and-send.html" class="sidebar-link">接收和发送信息</a></li><li><a href="/guide/plugin-and-context.html" class="sidebar-link">插件与上下文</a></li><li><a href="/guide/command-system.html" class="sidebar-link">指令系统</a></li><li><a href="/guide/using-database.html" class="active sidebar-link">使用数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/using-database.html#安装数据库" class="sidebar-link">安装数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/using-database.html#使用配置文件" class="sidebar-link">使用配置文件</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#使用-api" class="sidebar-link">使用 API</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#安装多个数据库" class="sidebar-link">安装多个数据库</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#解决数据库冲突" class="sidebar-link">解决数据库冲突</a></li></ul></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#调用数据库" class="sidebar-link">调用数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/using-database.html#常见的接口设计" class="sidebar-link">常见的接口设计</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#合并获取和插入" class="sidebar-link">合并获取和插入</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#使用观察者" class="sidebar-link">使用观察者</a></li></ul></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#向数据库中注入" class="sidebar-link">向数据库中注入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/using-database.html#注入字段" class="sidebar-link">注入字段</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#注入方法" class="sidebar-link">注入方法</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#注入表" class="sidebar-link">注入表</a></li></ul></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#定义新的数据库" class="sidebar-link">定义新的数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/using-database.html#数据库的启动和停止" class="sidebar-link">数据库的启动和停止</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#数据库的复用" class="sidebar-link">数据库的复用</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#配置每个表" class="sidebar-link">配置每个表</a></li><li class="sidebar-sub-header"><a href="/guide/using-database.html#数据库访问原理" class="sidebar-link">数据库访问原理</a></li></ul></li></ul></li><li><a href="/guide/authorization.html" class="sidebar-link">用户管理</a></li><li><a href="/guide/lifecycle.html" class="sidebar-link">生命周期</a></li><li><a href="/guide/multiple-bots.html" class="sidebar-link">多机器人开发</a></li><li><a href="/guide/logger.html" class="sidebar-link">输出与日志</a></li><li><a href="/guide/unit-tests.html" class="sidebar-link">单元测试</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用数据库"><a href="#使用数据库" class="header-anchor">#</a> 使用数据库</h1> <p>在之前的章节中，我们已经看到 Koishi 内部实现了一套权限管理系统，这需要对数据库的支持。但是另一方面，为了保证纯粹性，Koishi 的核心库 koishi-core 并不希望写入对某个具体的数据库的支持。因此，Koishi 的数据库采取了注入的方法。因此插件开发者大可不必同时担心 Koishi 使用了自己不了解的数据库框架——因为任何数据库在 Koishi 的调用中都提供了相同的接口。</p> <h2 id="安装数据库"><a href="#安装数据库" class="header-anchor">#</a> 安装数据库</h2> <p>正如上面所说的，如果你是 Koishi 的插件开发者，你可能不需要关心具体的数据库实现（除非你本身需要新的表来存储数据）。但是如果你是 Koishi 的使用者，只有当安装了数据库你才能正常使用所有的特性。首先你需要安装数据库依赖：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#75715E;"># 我们以 mysql 数据库为例</span>
+<span style="color:#75715E;"># 与插件类似，数据库支持通常以 koishi-database- 开头</span>
+<span style="color:#F8F8F2;">npm i koishi-database-mysql</span>
+<span style="color:#75715E;"># 或 yarn add koishi-database-mysql</span></code></pre></div></div><h3 id="使用配置文件"><a href="#使用配置文件" class="header-anchor">#</a> 使用配置文件</h3> <p>然后如果你使用的是 <a href="/guide/config-file.html">配置文件</a>，你可以向文件中添加 <code>database</code> 属性：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;">.</span><span style="color:#66D9EF;">exports</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    mysql: {</span>
+<span style="color:#F8F8F2;">      host: </span><span style="color:#E6DB74;">'[host]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      port: </span><span style="color:#AE81FF;">3306</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      user: </span><span style="color:#E6DB74;">'root'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      password: </span><span style="color:#E6DB74;">'[password]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      database: </span><span style="color:#E6DB74;">'[database]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">    },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">}</span></code></pre></div></div><h3 id="使用-api"><a href="#使用-api" class="header-anchor">#</a> 使用 API</h3> <p>对于 Koishi API 的使用者，你需要手动引入这个数据库，并将相同的配置传入 <a href="/api/app.html">App</a> 的构造选项中：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> { App, startAll } </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi'</span><span style="color:#F8F8F2;">)</span>
+<span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi-database-mysql'</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    mysql: {</span>
+<span style="color:#F8F8F2;">      host: </span><span style="color:#E6DB74;">'[host]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      port: </span><span style="color:#AE81FF;">3306</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      user: </span><span style="color:#E6DB74;">'root'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      password: </span><span style="color:#E6DB74;">'[password]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      database: </span><span style="color:#E6DB74;">'[database]'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">    },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span>
+
+<span style="color:#A6E22E;">startAll</span><span style="color:#F8F8F2;">()</span></code></pre></div></div><h3 id="安装多个数据库"><a href="#安装多个数据库" class="header-anchor">#</a> 安装多个数据库</h3> <p>你也可以在一个 Koishi 项目中使用多个数据库，例如用 mysql 存储教学对话，用 leveldb 存储用户数据。方法也很简单，只需在 database 属性中添加其他的值即可：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi-database-mysql'</span><span style="color:#F8F8F2;">)</span>
+<span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi-database-level'</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> app </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    mysql: { </span><span style="color:#75715E;">/* mysql configuration */</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">    level: { </span><span style="color:#75715E;">/* leveldb configuration */</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span></code></pre></div></div><h3 id="解决数据库冲突"><a href="#解决数据库冲突" class="header-anchor">#</a> 解决数据库冲突</h3> <p>尽管我们可以让多个数据库同时运行，但是上面的配置却无法指定每个数据库管理哪部分数据。也就是说数据库之间可能存在在 API 冲突。这种情况下可能需要你手动解决这些冲突，方法很简单，只需在 <code>config.database</code> 中加入一个 <code>$tables</code> 属性，显式地说明哪张表用哪个数据库管理即可：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;">.</span><span style="color:#66D9EF;">exports</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    $tables: {</span>
+<span style="color:#F8F8F2;">      user: </span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      group: </span><span style="color:#E6DB74;">'level'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">    },</span>
+<span style="color:#F8F8F2;">    mysql: { </span><span style="color:#75715E;">/* mysql configuration */</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">    level: { </span><span style="color:#75715E;">/* leveldb configuration */</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">}</span></code></pre></div></div><h2 id="调用数据库"><a href="#调用数据库" class="header-anchor">#</a> 调用数据库</h2> <p>你可以通过访问 <code>ctx.database</code> 来调用数据库接口：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#75715E;">// 获取用户数据</span>
+<span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> user </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">await</span><span style="color:#F8F8F2;"> ctx.database.</span><span style="color:#A6E22E;">getUser</span><span style="color:#F8F8F2;">(id)</span>
+
+<span style="color:#75715E;">// 修改群数据</span>
+<span style="color:#F92672;">await</span><span style="color:#F8F8F2;"> ctx.database.</span><span style="color:#A6E22E;">setGroup</span><span style="color:#F8F8F2;">(id, { assignee: </span><span style="color:#AE81FF;">123456789</span><span style="color:#F8F8F2;"> })</span></code></pre></div></div><p>你可以在后面的 <a href="/api/database.html">API</a> 文档中看到全部内置的数据库 API。不过在这里我先介绍一下 Koishi 的数据库接口的几种设计，方便理解。</p> <h3 id="常见的接口设计"><a href="#常见的接口设计" class="header-anchor">#</a> 常见的接口设计</h3> <p>下面的代码展示了一个 Koishi 数据库最常见的接口设计，它广泛地运用于各种插件中：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#75715E;">// 向数据库中获取一行，可以采用 getXXX(id, fields) 的形式</span>
+<span style="color:#75715E;">// 其中 id 是该行的标识符，fields 是需要的字段</span>
+<span style="color:#75715E;">// 对于有些数据库这个参数是自动忽略的，无论填写什么都会返回一切字段</span>
+<span style="color:#75715E;">// 如果该行存在则返回该行的对应字段，否则返回 null</span>
+<span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">getSchedule</span><span style="color:#F8F8F2;">(id, fields)</span>
+
+<span style="color:#75715E;">// 向数据库中添加一行，可以采用 createXXX(data) 的形式</span>
+<span style="color:#75715E;">// 其中 data 是一个键值对；返回值是添加的行的完整数据（包括自动生成的 id 和默认属性等）</span>
+<span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">createSchedule</span><span style="color:#F8F8F2;">(data)</span>
+
+<span style="color:#75715E;">// 修改数据库中的一行，可以采用 setXXX(id, data) 的形式</span>
+<span style="color:#75715E;">// 其中 id 是该行的标识符，data 是要更改的数据</span>
+<span style="color:#75715E;">// 修改时只会用 data 中的键进行覆盖，不会影响未记录在 data 中的资源</span>
+<span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">setSchedule</span><span style="color:#F8F8F2;">(id, data)</span></code></pre></div></div><h3 id="合并获取和插入"><a href="#合并获取和插入" class="header-anchor">#</a> 合并获取和插入</h3> <p>对于 Koishi 内部的两个抽象表 users 和 groups，情况略有不同。由于这两个表的访问量非常大，同时可能有许多未记录的数据请求，因此 Koishi 对这两个表采取了合并获取和插入的方法。你可以看到，在这种情况下将不需要使用 createXXX 方法就能插入新的行：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#75715E;">// 中间增加了一个第二参数，表示默认情况下的权限等级</span>
+<span style="color:#75715E;">// 如果找到该用户，则不修改任何数据，返回该用户本身</span>
+<span style="color:#75715E;">// 如果未找到该用户，且 authority 小于 0，则返回 null</span>
+<span style="color:#75715E;">// 否则创建一个新的用户数据，权限为 authority</span>
+<span style="color:#75715E;">// 如果 authority 大于 0，则将新的用户数据添加到表中</span>
+<span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">getUser</span><span style="color:#F8F8F2;">(id, authority, fields)</span>
+
+<span style="color:#75715E;">// 中间增加了一个第二参数，表示默认情况下的 assignee</span>
+<span style="color:#75715E;">// 如果找到该群，则不修改任何数据，返回该群本身</span>
+<span style="color:#75715E;">// 如果未找到该群，则创建一个新的群，代理者为 selfId</span>
+<span style="color:#75715E;">// 如果 selfId 大于 0，则将新的群数据添加到表中</span>
+<span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">getGroup</span><span style="color:#F8F8F2;">(id, selfId, fields)</span></code></pre></div></div><h3 id="使用观察者"><a href="#使用观察者" class="header-anchor">#</a> 使用观察者</h3> <p>由于 Koishi 采取了中间件的处理流程，很可能发生用户数据在多个阶段都被修改的情况。如果每次修改都上传数据，势必会造成不必要的性能损失；如果每次修改不上传而是仅仅缓存，延迟的上传则可能导致必须上传所有字段，且有多个实例上传数据冲突的风险。对于这种情况，Koishi 设计了一套<strong>观察者模式</strong>，可以让你更轻松地管理用户数据：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#75715E;">// 创建一个观察者</span>
+<span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> user </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">await</span><span style="color:#F8F8F2;"> database.</span><span style="color:#A6E22E;">observeUser</span><span style="color:#F8F8F2;">(id)</span>
+
+<span style="color:#75715E;">// 在多个中间件中修改用户数据</span>
+<span style="color:#F8F8F2;">user.name </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'foo'</span>
+<span style="color:#F8F8F2;">user.money </span><span style="color:#F92672;">+=</span><span style="color:#F8F8F2;"> </span><span style="color:#AE81FF;">100</span>
+<span style="color:#A6E22E;">updateActivity</span><span style="color:#F8F8F2;">(user.activity, </span><span style="color:#AE81FF;">123456789</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#75715E;">// 上传更新</span>
+<span style="color:#F8F8F2;">user.</span><span style="color:#A6E22E;">_update</span><span style="color:#F8F8F2;">()</span></code></pre></div></div><p>在上面的例子中，数据分成几次更新，但直到最后才进行上传。且由于观察者会记录每次的变化，使得最后更新时只修改之前变动的字段成为可能。更重要的是，这个更新时 Koishi 隐式地为你完成的，因此你<strong>甚至无需手动更新数据</strong>，只要你直接在中间件中修改 <code>meta.$user</code> 的数据即可。</p> <div class="custom-block tip"><p class="custom-block-title">观察者的局限性和优化措施</p> <p>如果你是插件开发者，这里有一些观察者的局限性需要提醒你。由于观察者本质上还是要延迟更新，因此为了确保数据安全，如果 <code>meta.$user</code> 已经被改动，你应当尽量在异步操作开始前手动进行 <code>meta.$user._update()</code> 的调用。</p> <p>顺便一提，一旦成功执行了观察者的 <code>_update()</code> 方法，之前的缓冲区将会被清空，因此之后不会重复更新数据；对于缓冲区为空的观察者，<code>_update()</code> 方法也会直接返回，不会产生任何的数据库访问。这些都是我们优化的几个细节。</p></div> <h2 id="向数据库中注入"><a href="#向数据库中注入" class="header-anchor">#</a> 向数据库中注入</h2> <p>由于 Koishi 的数据库实现使用了注入策略，因此无论是字段，表，方法还是数据库都是可以注入的。</p> <h3 id="注入字段"><a href="#注入字段" class="header-anchor">#</a> 注入字段</h3> <p>向内置的 users 和 groups 两张表中注入字段的方式如下：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> { extendUser } </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi'</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#75715E;">// 向用户数据库中注入字段 foo，默认值为 'bar'</span>
+<span style="color:#A6E22E;">extendUser</span><span style="color:#F8F8F2;">(() </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> ({ foo: </span><span style="color:#E6DB74;">'bar'</span><span style="color:#F8F8F2;"> }))</span></code></pre></div></div><p>如果你是 TypeScript 用户，你可能还需要进行定义合并：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F92672;">import</span><span style="color:#F8F8F2;"> { extendUser } </span><span style="color:#F92672;">from</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi'</span>
+
+<span style="color:#F92672;">declare</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi-core/dist/database'</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">UserData</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    foo</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">string</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">extendUser</span><span style="color:#F8F8F2;">(() </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> ({ foo: </span><span style="color:#E6DB74;">'bar'</span><span style="color:#F8F8F2;"> }))</span></code></pre></div></div><h3 id="注入方法"><a href="#注入方法" class="header-anchor">#</a> 注入方法</h3> <p>向数据库中添加新的表，你并不需要对表进行描述（虽然只有这样才能让其他人对你的表进行二次注入，但如果你没有这种需求你当然可以不这么做），只需调用 <code>injectMethods()</code> 方法添加新的数据库方法：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> { injectMethods } </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi'</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#75715E;">// 第一个参数声明这个方法依赖于 mysql 数据库</span>
+<span style="color:#75715E;">// 第二个参数表明这次调用注入的是 user 表</span>
+<span style="color:#A6E22E;">injectMethods</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">, </span><span style="color:#E6DB74;">'user'</span><span style="color:#F8F8F2;">, {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;"> (</span><span style="color:#F92672;">...</span><span style="color:#FD971F;">args</span><span style="color:#F8F8F2;">) {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#75715E;">// 此时这里的 this 就变成了一个 MysqlDatabase 对象</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#75715E;">// 这也是 koishi-database-mysql 的导出之一</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> this.</span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;">(sql)</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span></code></pre></div></div><p>这也依赖，你就可以直接调用刚刚定义的方法了：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F8F8F2;">ctx.database.</span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;">(</span><span style="color:#F92672;">...</span><span style="color:#F8F8F2;">args)</span></code></pre></div></div><p>如果你是 TypeScript 用户，你可能还需要进行定义合并：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F92672;">import</span><span style="color:#F8F8F2;"> { injectMethods } </span><span style="color:#F92672;">from</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi'</span>
+
+<span style="color:#75715E;">// 这里需要手动导入 MysqlDatabase 的类型</span>
+<span style="color:#75715E;">// 你应该将 koishi-database-mysql 作为插件的 devDependency</span>
+<span style="color:#75715E;">// 尽量使用 import {}，这样可以不产生任何输出，有助于明确依赖关系</span>
+<span style="color:#F92672;">import</span><span style="color:#F8F8F2;"> {} </span><span style="color:#F92672;">from</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi-database-mysql'</span>
+
+<span style="color:#F92672;">declare</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi-core/dist/database'</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">UserMethods</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;"> (</span><span style="color:#F92672;">...</span><span style="color:#FD971F;">args</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">SomeType</span><span style="color:#F8F8F2;">)</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">SomeType</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">injectMethods</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">, </span><span style="color:#E6DB74;">'user'</span><span style="color:#F8F8F2;">, {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;"> (</span><span style="color:#F92672;">...</span><span style="color:#FD971F;">args</span><span style="color:#F8F8F2;">) {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#75715E;">// 这里已经可以进行类型推断了</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> this.</span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;">(sql)</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span></code></pre></div></div><div class="custom-block tip"><p class="custom-block-title">有关注入方法的 this</p> <p>在所有注入方法中，你的 <code>this</code> 都可以访问到同时注册的其他方法和这些注入方法绑定的子数据库本身。</p></div> <h3 id="注入表"><a href="#注入表" class="header-anchor">#</a> 注入表</h3> <p>尽管注入表不需要你在 JavaScript 中进行额外的操作，但是如果你是 TypeScript 使用者，你需要对注入的表进行定义，就像这样：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MyTableData</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  myData</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">SomeType</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MyTableMethods</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;"> (</span><span style="color:#F92672;">...</span><span style="color:#FD971F;">args</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">SomeType</span><span style="color:#F8F8F2;">)</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MyTableData</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#F92672;">declare</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi-core/dist/database'</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">TableData</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    myTable</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MyTableData</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">TableMethods</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    myTable</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MyTableMethods</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">injectMethods</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">, </span><span style="color:#E6DB74;">'myTable'</span><span style="color:#F8F8F2;">, {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">myMethod</span><span style="color:#F8F8F2;"> () {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> this.</span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;">(sql)</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">}</span></code></pre></div></div><h2 id="定义新的数据库"><a href="#定义新的数据库" class="header-anchor">#</a> 定义新的数据库</h2> <p>最后，让我们介绍一下如何定义新的数据库。与上面介绍的方法类似，我们也采用注入的方式，不过这次我们需要先实现一个类。我们用 mysql 来举个例子：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> { createPool } </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">)</span>
+<span style="color:#66D9EF;">const</span><span style="color:#F8F8F2;"> { registerDatabase } </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">require</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'koishi'</span><span style="color:#F8F8F2;">)</span>
+
+<span style="color:#66D9EF;">class</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MysqlDatabase</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">constructor</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">config</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> {}) {</span>
+<span style="color:#F8F8F2;">    this.pool </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">createPool</span><span style="color:#F8F8F2;">(config)</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">sql</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">string</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">values</span><span style="color:#F92672;">?:</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">any</span><span style="color:#F8F8F2;">)</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Promise</span><span style="color:#F8F8F2;">&lt;</span><span style="color:#66D9EF;">any</span><span style="color:#F8F8F2;">&gt; </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Promise</span><span style="color:#F8F8F2;">((</span><span style="color:#FD971F;">resolve</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">reject</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">      this.pool.</span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;">(sql, values, (</span><span style="color:#FD971F;">error</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">results</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">fields</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">        </span><span style="color:#F92672;">if</span><span style="color:#F8F8F2;"> (error) {</span>
+<span style="color:#F8F8F2;">          </span><span style="color:#A6E22E;">reject</span><span style="color:#F8F8F2;">(error)</span>
+<span style="color:#F8F8F2;">        } </span><span style="color:#F92672;">else</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">          </span><span style="color:#A6E22E;">resolve</span><span style="color:#F8F8F2;">(results)</span>
+<span style="color:#F8F8F2;">        }</span>
+<span style="color:#F8F8F2;">      })</span>
+<span style="color:#F8F8F2;">    })</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">registerDatabase</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">, MysqlDatabase)</span></code></pre></div></div><p>对于 TypeScript 的使用者，你可以像这样进行类型合并：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F92672;">import</span><span style="color:#F8F8F2;"> { createPool, Pool, PoolConfig } </span><span style="color:#F92672;">from</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'mysql'</span>
+<span style="color:#F92672;">import</span><span style="color:#F8F8F2;"> { registerDatabase } </span><span style="color:#F92672;">from</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi'</span>
+
+<span style="color:#F92672;">declare</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">module</span><span style="color:#F8F8F2;"> </span><span style="color:#E6DB74;">'koishi-core/dist/database'</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Subdatabases</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    mysql</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MysqlDatabase</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">interface</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">DatabaseConfig</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">    mysql</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">PoolConfig</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#66D9EF;">class</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">MysqlDatabase</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  pool</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Pool</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">constructor</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">config</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">PoolConfig</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> {}) {</span>
+<span style="color:#F8F8F2;">    this.pool </span><span style="color:#F92672;">=</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">createPool</span><span style="color:#F8F8F2;">(config)</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">sql</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">string</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">values</span><span style="color:#F92672;">?:</span><span style="color:#F8F8F2;"> </span><span style="color:#66D9EF;">any</span><span style="color:#F8F8F2;">)</span><span style="color:#F92672;">:</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Promise</span><span style="color:#F8F8F2;">&lt;</span><span style="color:#66D9EF;">any</span><span style="color:#F8F8F2;">&gt; {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> </span><span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">Promise</span><span style="color:#F8F8F2;">((</span><span style="color:#FD971F;">resolve</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">reject</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">      this.pool.</span><span style="color:#A6E22E;">query</span><span style="color:#F8F8F2;">(sql, values, (</span><span style="color:#FD971F;">error</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">results</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">fields</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;">=&gt;</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">        </span><span style="color:#F92672;">if</span><span style="color:#F8F8F2;"> (error) {</span>
+<span style="color:#F8F8F2;">          </span><span style="color:#A6E22E;">reject</span><span style="color:#F8F8F2;">(error)</span>
+<span style="color:#F8F8F2;">        } </span><span style="color:#F92672;">else</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">          </span><span style="color:#A6E22E;">resolve</span><span style="color:#F8F8F2;">(results)</span>
+<span style="color:#F8F8F2;">        }</span>
+<span style="color:#F8F8F2;">      })</span>
+<span style="color:#F8F8F2;">    })</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">registerDatabase</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'mysql'</span><span style="color:#F8F8F2;">, MysqlDatabase)</span></code></pre></div></div><p>当然，完整的 <a href="https://github.com/koishijs/koishi-database-mysql" target="_blank" rel="noopener noreferrer"><code>koishi-database-mysql</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 要比上面的例子复杂的多，我们还需要处理有关数据库的更多细节。</p> <h3 id="数据库的启动和停止"><a href="#数据库的启动和停止" class="header-anchor">#</a> 数据库的启动和停止</h3> <p>然而很多数据库并没有像上面写的这么简单——例如数据库的加载可能包含一些异步操作，这些操作是不适合在构造函数中完成的；如果你希望你的应用平稳地停止，也最好提供一个数据库的中止函数。这些接口将由你来提供，只需在你传入的 Database 类中添加 <code>start</code> 和 <code>stop</code> 两个方法即可。这两个方法都可以是异步的：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">class</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">CustomDatabase</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#F92672;">async</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">start</span><span style="color:#F8F8F2;"> () {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">await</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">doSomeAsyncWorks</span><span style="color:#F8F8F2;">()</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#F92672;">async</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">stop</span><span style="color:#F8F8F2;"> () {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">await</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">doSomeAsyncWorks</span><span style="color:#F8F8F2;">()</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">registerDatabase</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'custom'</span><span style="color:#F8F8F2;">, CustomDatabase)</span></code></pre></div></div><h3 id="数据库的复用"><a href="#数据库的复用" class="header-anchor">#</a> 数据库的复用</h3> <p>在 <a href="/guide/multiple-bots.html">多机器人开发</a> 一章中，我们会讨论到数据库实例的复用。诚然，复用数据库实例这件事是 Koishi 内部完成的，但如果你在某些时刻的确需要使用独立的数据库实例，你就需要了解数据库复用的原理。</p> <p>最简单的方式就是在对应数据库的参数中手动设置 <code>identifier</code> 属性，不同的标识符将提示 Koishi 构造不同的数据库实例：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    custom: {</span>
+<span style="color:#F8F8F2;">      identifier: </span><span style="color:#AE81FF;">1</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      </span><span style="color:#75715E;">// other configurations</span>
+<span style="color:#F8F8F2;">    },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span>
+
+<span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    custom: {</span>
+<span style="color:#F8F8F2;">      identifier: </span><span style="color:#AE81FF;">2</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">      </span><span style="color:#75715E;">// other configurations</span>
+<span style="color:#F8F8F2;">    },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">}]</span></code></pre></div></div><p>除此以外，Koishi 也提供了隐式的标识符设计。向你的数据库类添加一个静态方法 <code>identiy</code>，这个函数将传入一个将要传给构造函数的 <code>config</code> 对象，返回一个字符串或数字，这个返回值将会成为该数据库的标识符，并将作为传入构造函数的配置的 <code>identifier</code> 属性。</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">class</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">CustomDatabase</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#F92672;">static</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">identify</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">config</span><span style="color:#F8F8F2;">) {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#F92672;">return</span><span style="color:#F8F8F2;"> config.path</span>
+<span style="color:#F8F8F2;">  }</span>
+
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">constructor</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">config</span><span style="color:#F8F8F2;">) {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#66D9EF;">console</span><span style="color:#F8F8F2;">.</span><span style="color:#66D9EF;">log</span><span style="color:#F8F8F2;">(config.identifier)</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">registerDatabase</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'custom'</span><span style="color:#F8F8F2;">, CustomDatabase)</span>
+
+<span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    custom: { path: </span><span style="color:#E6DB74;">'foo'</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span>
+
+<span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    custom: { path: </span><span style="color:#E6DB74;">'bar'</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span>
+
+<span style="color:#F92672;">new</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">App</span><span style="color:#F8F8F2;">({</span>
+<span style="color:#F8F8F2;">  database: {</span>
+<span style="color:#F8F8F2;">    custom: { path: </span><span style="color:#E6DB74;">'bar'</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  },</span>
+<span style="color:#F8F8F2;">})</span></code></pre></div></div><p>例如上面的代码将只产生两个输出。</p> <h3 id="配置每个表"><a href="#配置每个表" class="header-anchor">#</a> 配置每个表</h3> <p>很多数据库都提供了表（Table）作为二级结构，Koishi 也为这种结构提供了原生的支持。然而，像 leveldb 这种基于键值对的数据库并没有这种结构，对于这种情况，Koishi 中则将表封装成了一个子数据库。因此在这种情况下，你甚至可以对每个表分别进行配置。额外的配置可以作为 <code>injectMethods</code> 的第三个参数，同时它们将被传入你的数据库的构造函数，就像这样：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#66D9EF;">class</span><span style="color:#F8F8F2;"> </span><span style="color:#A6E22E;">LevelDatabase</span><span style="color:#F8F8F2;"> {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">constructor</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;">config</span><span style="color:#F8F8F2;">, </span><span style="color:#FD971F;">tables</span><span style="color:#F8F8F2;">) {</span>
+<span style="color:#F8F8F2;">    </span><span style="color:#66D9EF;">console</span><span style="color:#F8F8F2;">.</span><span style="color:#66D9EF;">log</span><span style="color:#F8F8F2;">(tables)</span>
+<span style="color:#F8F8F2;">  }</span>
+<span style="color:#F8F8F2;">}</span>
+
+<span style="color:#A6E22E;">registerDatabase</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'level'</span><span style="color:#F8F8F2;">, LevelDatabase)</span>
+
+<span style="color:#A6E22E;">injectMethods</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'level'</span><span style="color:#F8F8F2;">, </span><span style="color:#E6DB74;">'user'</span><span style="color:#F8F8F2;">, {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#75715E;">// some methods</span>
+<span style="color:#F8F8F2;">}, {</span>
+<span style="color:#F8F8F2;">  keyEncoding: </span><span style="color:#E6DB74;">'utf8'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">})</span>
+
+<span style="color:#A6E22E;">injectMethods</span><span style="color:#F8F8F2;">(</span><span style="color:#E6DB74;">'level'</span><span style="color:#F8F8F2;">, </span><span style="color:#E6DB74;">'group'</span><span style="color:#F8F8F2;">, {</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#75715E;">// some methods</span>
+<span style="color:#F8F8F2;">}, {</span>
+<span style="color:#F8F8F2;">  valueEncoding: </span><span style="color:#E6DB74;">'json'</span><span style="color:#F8F8F2;">,</span>
+<span style="color:#F8F8F2;">})</span></code></pre></div></div><p>这里的输出结果将形如：</p> <div class="panel-view code mini"><div class="controls"><div class="circle red"></div> <div class="circle yellow"></div> <div class="circle green"></div> <div class="title"></div></div> <div class="content"><pre class="shiki" style="background-color:#272822;"><code><span style="color:#F8F8F2;">{</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">&quot;user&quot;</span><span style="color:#F8F8F2;">: { </span><span style="color:#66D9EF;">&quot;keyEncoding&quot;</span><span style="color:#F8F8F2;">: </span><span style="color:#CFCFC2;">&quot;utf8&quot;</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">  </span><span style="color:#66D9EF;">&quot;group&quot;</span><span style="color:#F8F8F2;">: { </span><span style="color:#66D9EF;">&quot;valueEncoding&quot;</span><span style="color:#F8F8F2;">: </span><span style="color:#CFCFC2;">&quot;json&quot;</span><span style="color:#F8F8F2;"> },</span>
+<span style="color:#F8F8F2;">}</span></code></pre></div></div><h3 id="数据库访问原理"><a href="#数据库访问原理" class="header-anchor">#</a> 数据库访问原理</h3> <p>在本章的最后，我们简单介绍一个 Koishi 的数据库访问原理。尽管 Koishi 的核心库 koishi-core 本身不含任何具体的数据库逻辑，但是它却提供了一批注入接口。</p> <ul><li>当用户调用 <code>registerDatabase()</code> 时，会向 koishi-core 提交一个新的子数据库类型。</li> <li>当用户调用 <code>injectMethods()</code> 时，koishi-core 会将新的方法记录在对应的数据库和对应的表上。同时如果传入了第三个参数，将先被保存下来。</li> <li>当用户进行 <code>config.database.mysql</code> 配置时，koishi-core 也会自动寻找已经定义过的子数据库 mysql，一旦找到，首先会根据 <code>identifier</code> 或者 <code>identify</code> 生成标识符，接着检查该数据库是否已经被构造，如果没有就构造出一个新的 <code>MysqlDatabase</code> 实例。再之后根据 <code>config.database.$tables</code> 提供的信息选取出要注入的方法，将这些方法绑定这个实例并传入 <code>app.database</code> 中，这就实现了完整的注入和 <code>this</code> 绑定。</li> <li>当用户调用 <code>app.start()</code> 或 <code>startAll()</code> 时，koishi-core 会检查每个已经存在的数据库是否拥有 <code>start</code> 方法，如果有就进行调用；当用户调用 <code>app.stop()</code> 或 <code>stopAll()</code> 时同理。</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/koishijs/koishijs.github.io/edit/docs/guide/using-database.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/17/2019, 10:33:01 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/command-system.html" class="prev">指令系统</a></span> <span class="next"><a href="/guide/authorization.html">用户管理</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.5e404ef9.js" defer></script><script src="/assets/js/3.96e62b40.js" defer></script><script src="/assets/js/9.c056d3a4.js" defer></script><script src="/assets/js/41.ff23dafa.js" defer></script><script src="/assets/js/6.e0e03e1b.js" defer></script>
+  </body>
+</html>
